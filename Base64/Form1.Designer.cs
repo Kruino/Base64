@@ -39,11 +39,12 @@ namespace Base64
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // richTextBox2
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(12, 23);
+            this.richTextBox2.Location = new System.Drawing.Point(12, 25);
             this.richTextBox2.Name = "richTextBox2";
             this.richTextBox2.Size = new System.Drawing.Size(348, 146);
             this.richTextBox2.TabIndex = 0;
@@ -52,9 +53,9 @@ namespace Base64
             // button2
             // 
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.Location = new System.Drawing.Point(366, 65);
+            this.button2.Location = new System.Drawing.Point(366, 87);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(89, 133);
+            this.button2.Size = new System.Drawing.Size(89, 111);
             this.button2.TabIndex = 1;
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
@@ -95,7 +96,7 @@ namespace Base64
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(366, 39);
+            this.textBox1.Location = new System.Drawing.Point(366, 42);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(88, 20);
             this.textBox1.TabIndex = 6;
@@ -103,7 +104,7 @@ namespace Base64
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(366, 23);
+            this.label2.Location = new System.Drawing.Point(366, 26);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 7;
@@ -122,15 +123,24 @@ namespace Base64
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(269, 7);
+            this.label4.Location = new System.Drawing.Point(300, 7);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(35, 13);
             this.label4.TabIndex = 9;
             this.label4.Text = "label4";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(366, 68);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(88, 13);
+            this.progressBar1.TabIndex = 10;
             // 
             // Form1
             // 
             this.ClientSize = new System.Drawing.Size(467, 210);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -159,6 +169,7 @@ namespace Base64
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
 

@@ -19,11 +19,11 @@ namespace Base64
             this.Text = "Base64 Decoder";
             button2.Text = "Decode";
             button3.Text = "Delete Text";
-            label1.Text = "Base64 to Mp4/Mp3/Mkv/Jpg/Png/Gif/Pdf:";
+            label1.Text = "Base64:";
             button5.Text = "Go to file";
             label2.Text = "File Name:";
             label3.Text = "";
-            label4.Text = "Type:";
+            label4.Text = "Type:";            
             richTextBox2.DragDrop += new DragEventHandler(richTextBox2_DragDrop);
             richTextBox2.AllowDrop = true;
             
@@ -56,7 +56,9 @@ namespace Base64
             
             string FilePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop); // finder den nuværendes brugers desktop mappe
             string type = "Type";
-            
+            progressBar1.Maximum = 100;
+            progressBar1.Minimum = 0;
+            progressBar1.Value = 0;
             
             if (string.IsNullOrEmpty(richTextBox2.Text)) //Checker om base64 input feltet er tomt, og lær dig ikke komme vidre vis det er.
             {
@@ -126,11 +128,14 @@ namespace Base64
                         label4.Text = "Type: mp4";
                     break;
 
-
                     //---------------------------------------------------------//                    
 
+                    case string Docx when Docx.Contains("UEsDBBQA"):
+                        type = ".docx";
+                        label4.Text = "Type: Docx";
+                    break;
                 }
-
+                
                 string FileLocation = FilePath + @"\" + FileName + type; // string der får sat sammen hele file stigen. For at kunne checke den og bruge den længere nede.
 
                 if (File.Exists(FileLocation)) // Cheker om filen excistere.  
@@ -145,17 +150,18 @@ namespace Base64
                 }
                 else
                 {
-
+                     
                     byte[] Bytes = Convert.FromBase64String(Base64BinaryStr); // tær Base64BinaryStr og convertere den fra base64.
+                    
 
-                    System.IO.FileStream Stream =
+                System.IO.FileStream Stream =
                 new FileStream(FileLocation, FileMode.CreateNew); //Udskriver den som den type den fandt ud af tidligere.
                     System.IO.BinaryWriter Writer =
                         new BinaryWriter(Stream);
                     Writer.Write(Bytes, 0, Bytes.Length);
                     Writer.Close();
 
-
+                    progressBar1.Value = 100;
 
                     //vis de har fået sat et navn på ændre den label2 tilbage til Name:
                     label2.Text = "Name:";
@@ -165,7 +171,7 @@ namespace Base64
                     //Vis man er kommet igennem decoding skriver den Succesful i bunden. 
                     label3.Text = "Your decoding was succesful.";
                     label3.ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
-
+                    
                 }
             }
        }
@@ -175,6 +181,7 @@ namespace Base64
         {
             richTextBox2.Text = ""; //vis du clicker delete text i bunden. Sletter den alt text inden i text feltet.
             label3.Text = "";
+            
         }  
 
         private void button5_Click(object sender, EventArgs e)
@@ -195,6 +202,11 @@ namespace Base64
         }
         private void button2_Click(object sender, EventArgs e)
         {
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
